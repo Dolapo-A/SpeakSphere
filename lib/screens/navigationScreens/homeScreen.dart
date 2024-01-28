@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:speaksphere/constants/colors.dart';
+import 'package:speaksphere/screens/speaking/speakScreen.dart';
 import 'package:speaksphere/screens/streaks/streakScreen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -48,12 +49,10 @@ class HomeScreen extends StatelessWidget {
                       mainAxisExtent: 150,
                       crossAxisSpacing: 36,
                       mainAxisSpacing: 36,
-                      childAspectRatio: 1
-                     
-                      ),
+                      childAspectRatio: 1),
                   itemCount: 8,
                   itemBuilder: (context, index) {
-                    return buildGridItem(index);
+                    return buildGridItem(index, context);
                   })
             ],
           ),
@@ -116,25 +115,25 @@ class StatusBar extends StatelessWidget {
               onTap: () {},
               child: SvgPicture.asset('assets/components/kingdomflag.svg'),
             ),
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
                   return const StreakScreen();
-                    }));
-                  },
-                  child: SvgPicture.asset('assets/components/fire.svg'),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                const Text(
-                  '2',
-                  style: TextStyle(fontSize: 12),
-                ),
-              ],
+                }));
+              },
+              child: Row(
+                children: [
+                  SvgPicture.asset('assets/components/fire.svg'),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  const Text(
+                    '2',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ],
+              ),
             ),
             Row(
               children: [
@@ -162,13 +161,13 @@ class StatusBar extends StatelessWidget {
   }
 }
 
-Widget buildGridItem(int index) {
+Widget buildGridItem(int index, BuildContext context) {
   // Customize each grid item based on the index
   Widget itemContent = Container();
   Widget headingText = const Text('');
   Widget subheadingText = const Text('');
   Widget progressBar = const LinearProgressIndicator();
-  // Color backgroundColor;
+  // Widget context;
 
   switch (index % 8) {
     case 0:
@@ -206,7 +205,6 @@ Widget buildGridItem(int index) {
           value: 5 / 10,
           color: secondaryColor,
           backgroundColor: progressBarBackgroundColor);
-      Colors.green;
       break;
     case 2:
       itemContent = SvgPicture.asset('assets/components/writinghand.svg');
@@ -228,24 +226,60 @@ Widget buildGridItem(int index) {
       Colors.orange;
       break;
     case 3:
-      itemContent = SvgPicture.asset('assets/components/speaking.svg');
-      headingText = const Text(
-        'Speaking',
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+      return GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return const SpeakScreen();
+          }));
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(12.0),
+            border: Border.all(
+              color: secondaryColor50shade,
+              width: 1.0,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                itemContent =
+                    SvgPicture.asset('assets/components/speaking.svg'),
+                const SizedBox(
+                  height: 4,
+                ),
+                headingText = const Text(
+                  'Speaking',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(
+                  height: 2,
+                ),
+                subheadingText = const Text(
+                  'You completed 25%',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: inactiveTabColor),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                progressBar = const LinearProgressIndicator(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    minHeight: 6,
+                    value: 2.5 / 10,
+                    color: secondaryColor,
+                    backgroundColor: progressBarBackgroundColor),
+              ],
+            ),
+          ),
+        ),
       );
-      subheadingText = const Text(
-        'You completed 25%',
-        style: TextStyle(
-            fontSize: 13, fontWeight: FontWeight.w600, color: inactiveTabColor),
-      );
-      progressBar = const LinearProgressIndicator(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          minHeight: 6,
-          value: 2.5 / 10,
-          color: secondaryColor,
-          backgroundColor: progressBarBackgroundColor);
-      Colors.purple;
-      break;
+
     case 4:
       itemContent = SvgPicture.asset('assets/components/books.svg');
       headingText = const Text(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:speaksphere/screens/speaking/speakScreen.dart';
 import 'package:speaksphere/screens/splash/splashScreen.dart';
-import 'package:speaksphere/screens/streaks/streakScreen.dart';
 
 void main() {
   runApp(const MyApp());
