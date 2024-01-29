@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:speaksphere/constants/colors.dart';
+import 'package:speaksphere/screens/profile/profileScreen.dart';
 import 'package:speaksphere/screens/speaking/speakScreen.dart';
 import 'package:speaksphere/screens/streaks/streakScreen.dart';
 
@@ -77,11 +78,27 @@ class ProfileBar extends StatelessWidget {
           width: 8,
         ),
         GestureDetector(
-          onTap: () {},
-          child: Stack(children: [
-            SvgPicture.asset('assets/components/memoji.svg'),
-            Image.asset('assets/components/wink.png'),
-          ]),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>const ProfileScreen(),
+              ),
+            );
+          },
+          child: Hero(
+            tag: 'profileHero',
+            child: Stack(
+              children: [
+                Image.asset(
+                  'assets/Memoji.png',
+                  width: 36,
+                  height: 36,
+                ),
+                
+              ],
+            ),
+          ),
         )
       ],
     );
@@ -174,10 +191,14 @@ Widget buildGridItem(int index, BuildContext context) {
       itemContent = SvgPicture.asset('assets/components/openbook.svg');
       headingText = const Text(
         'Reading',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       );
       subheadingText = const Text(
         'You completed 50%',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.w600, color: inactiveTabColor),
       );
@@ -192,10 +213,14 @@ Widget buildGridItem(int index, BuildContext context) {
       itemContent = SvgPicture.asset('assets/components/headphone.svg');
       headingText = const Text(
         'Listening',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       );
       subheadingText = const Text(
         'You completed 50%',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.w600, color: inactiveTabColor),
       );
@@ -210,10 +235,14 @@ Widget buildGridItem(int index, BuildContext context) {
       itemContent = SvgPicture.asset('assets/components/writinghand.svg');
       headingText = const Text(
         'Writing',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       );
       subheadingText = const Text(
         'You completed 70%',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.w600, color: inactiveTabColor),
       );
@@ -253,6 +282,8 @@ Widget buildGridItem(int index, BuildContext context) {
                 ),
                 headingText = const Text(
                   'Speaking',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(
@@ -260,6 +291,8 @@ Widget buildGridItem(int index, BuildContext context) {
                 ),
                 subheadingText = const Text(
                   'You completed 25%',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -284,10 +317,14 @@ Widget buildGridItem(int index, BuildContext context) {
       itemContent = SvgPicture.asset('assets/components/books.svg');
       headingText = const Text(
         'Books',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       );
       subheadingText = const Text(
         'You completed 80%',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.w600, color: inactiveTabColor),
       );
@@ -303,10 +340,14 @@ Widget buildGridItem(int index, BuildContext context) {
       itemContent = SvgPicture.asset('assets/components/guess.svg');
       headingText = const Text(
         'Quizzes',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       );
       subheadingText = const Text(
         'You completed 40%',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.w600, color: inactiveTabColor),
       );
@@ -322,10 +363,14 @@ Widget buildGridItem(int index, BuildContext context) {
       itemContent = SvgPicture.asset('assets/components/puzzlepiece.svg');
       headingText = const Text(
         'Games',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       );
       subheadingText = const Text(
         'You completed 90%',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.w600, color: inactiveTabColor),
       );
@@ -341,10 +386,14 @@ Widget buildGridItem(int index, BuildContext context) {
       itemContent = SvgPicture.asset('assets/components/translate.svg');
       headingText = const Text(
         'Translation',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       );
       subheadingText = const Text(
         'You completed 40%',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.w600, color: inactiveTabColor),
       );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:speaksphere/screens/navigationScreens/homeScreen.dart';
+import 'package:speaksphere/screens/profile/profileScreen.dart';
 import 'package:speaksphere/screens/speaking/speakScreen.dart';
 import 'package:speaksphere/screens/splash/splashScreen.dart';
 
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.josefinSansTextTheme(),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 }
