@@ -23,7 +23,8 @@ class ContainerModel {
   ContainerModel({required this.category, this.isSelected = false});
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends State<OnboardingScreen>
+    with SingleTickerProviderStateMixin {
   List<String> categories = [
     'Studies',
     'Reading',
@@ -95,20 +96,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   width: 8,
                 ),
                 Expanded(
-                  child: LinearProgressIndicator(
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    minHeight: 6,
-                    value: selectedCount / 6,
-                    color: secondaryColor,
-                    // valueColor: ,
-                    backgroundColor:
-                        progressBarBackgroundColor, // Customize the background color as needed
-                  ),
+                  child: TweenAnimationBuilder<double>(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                      tween: Tween<double>(
+                        begin: 0,
+                        end: selectedCount.toDouble(),
+                      ),
+                      builder: (context, animatedValue, child) {
+                        return LinearProgressIndicator(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                          minHeight: 6,
+                          value: animatedValue / 6,
+                          color: secondaryColor,
+                          // valueColor: ,
+                          backgroundColor:
+                              progressBarBackgroundColor, // Customize the background color as needed
+                        );
+                      }),
                 ),
                 const SizedBox(
                   width: 8,
                 ),
-                
                 Text(
                   '$selectedCount/6',
                   style: const TextStyle(fontSize: 16),
@@ -247,11 +257,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               fontWeight: FontWeight.w500,
                               color: secondaryColor),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () =>
-                                Navigator.of(context).push(PageRouteBuilder(
+                            ..onTap = () => Navigator.of(context)
+                                    .pushReplacement(PageRouteBuilder(
                                   pageBuilder: (context, animation,
                                           secondaryAnimation) =>
-                                     const  BottomNavBar(),
+                                      const BottomNavBar(),
                                 ))),
                     ])),
                   ),
