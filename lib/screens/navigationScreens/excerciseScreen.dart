@@ -10,10 +10,7 @@ class ExcerciseScreen extends StatelessWidget {
     return const Scaffold(
             backgroundColor: backgroundColor,
 
-      body: Padding(
-        padding: EdgeInsets.only(top: 32, right: 8, bottom: 0, left: 8),
-        child: ComingSoonScreen(),
-      ),
+      body: ComingSoonScreen(),
     );
   }
 }

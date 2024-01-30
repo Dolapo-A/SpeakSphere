@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.1.0
   dotted_border: ^2.1.0
-  font_awesome_flutter: ^10.6.0
+  font_awesome_flutter: ^10.7.0
   flutter_svg: ^2.0.9
   flare_flutter: ^3.0.2
 

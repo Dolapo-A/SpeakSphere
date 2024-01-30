@@ -152,7 +152,7 @@ class _SpeakScreenState extends State<SpeakScreen>
                     height: 16,
                   ),
                   Text(
-                    'Hello, Buchi, nice to meet you.',
+                    'Hello, Dolapo, nice to meet you.',
                     style: TextStyle(
                       color: Color(0xFF616161),
                       fontSize: 16,
